@@ -26,7 +26,13 @@ export const TodoList: React.FC<Props> = React.memo(
 
       <tbody>
         {todosLists.map(todoList => (
-          <tr data-cy="todo" className="" key={todoList.id}>
+          <tr
+            data-cy="todo"
+            className={
+              todo && todo.id === todoList.id ? 'has-background-info-light' : ''
+            }
+            key={todoList.id}
+          >
             <td className="is-vcentered">{todoList.id}</td>
             <td className="is-vcentered">
               {todoList.completed && (
