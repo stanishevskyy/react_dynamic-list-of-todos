@@ -52,9 +52,15 @@ export const TodoList: React.FC<Props> = React.memo(
                 type="button"
                 onClick={() => setTodo(todoList)}
               >
-                <span className="icon">
-                  <i className={`far ${!todo ? 'fa-eye' : 'fa-eye-slash'}`} />
-                </span>
+                {todo && todo.id === todoList.id ? (
+                  <span className="icon">
+                    <i className="far fa-eye-slash" />
+                  </span>
+                ) : (
+                  <span className="icon">
+                    <i className="far fa-eye" />
+                  </span>
+                )}
               </button>
             </td>
           </tr>
