@@ -19,7 +19,7 @@ export const TodoModal: React.FC<Props> = React.memo(({ todo, setTodo }) => {
       setLoading(true);
 
       try {
-        const user = await getUser(todo?.id);
+        const user = await getUser(todo?.userId);
 
         setUsers(user);
       } finally {
@@ -28,7 +28,7 @@ export const TodoModal: React.FC<Props> = React.memo(({ todo, setTodo }) => {
     };
 
     fetchData();
-  }, [todo?.id]);
+  }, [todo?.userId]);
 
   return (
     <div className="modal is-active" data-cy="modal">
@@ -62,7 +62,11 @@ export const TodoModal: React.FC<Props> = React.memo(({ todo, setTodo }) => {
 
             <p className="block" data-cy="modal-user">
               {/* <strong className="has-text-success">Done</strong> */}
-              <strong className="has-text-danger">Planned</strong>
+              {todo?.completed ? (
+                <strong className="has-text-success">Done</strong>
+              ) : (
+                <strong className="has-text-danger">Planned</strong>
+              )}
 
               {' by '}
 
